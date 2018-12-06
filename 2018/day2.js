@@ -35,3 +35,42 @@ function calculateChecksum(boxIDs) {
 
     return pairCount * tripletCount;
 }
+
+function findCommonLetters(boxIDs) {
+    let diffCount = 0;
+    let matchingIds = [];
+
+    outer:
+    for (let i = 1; i < boxIDs.length - 1; i++) {
+        for (let j = i + 1; j < boxIDs.length; j++) {
+            for (let k = 0; k < boxIDs[i].length; k++) {
+                if (boxIDs[i].charAt(k) !== boxIDs[j].charAt(k)) {
+                    diffCount++;
+                }
+
+                if (diffCount > 1) {
+                    diffCount = 0;
+                    break;
+                }
+            }
+
+            if (diffCount === 1) {
+                matchingIds.push(boxIDs[i]);
+                matchingIds.push(boxIDs[j]);
+                break outer;
+            } else {
+                diffCount = 0;
+            }
+        }
+    }
+
+    let commonLetters = '';
+
+    for (let i = 0; i < matchingIds[0].length; i++) {
+        if (matchingIds[0].charAt(i) === matchingIds[1].charAt(i)) {
+            commonLetters += matchingIds[0].charAt(i);
+        }
+    }
+
+    return commonLetters;
+}
