@@ -19,6 +19,8 @@
 <script src="day10.js"></script>
 <script src="day4_input.js"></script>
 <script src="day4.js"></script>
+<script src="day5_input.js"></script>
+<script src="day5.js"></script>
 <script>
     QUnit.skip("Day 1, part 1. The device shows a sequence of changes in frequency (your puzzle input). A value like +6 means the current frequency increases by 6; a value like -3 means the current frequency decreases by 3. What is the resulting frequency?", function (assert) {
         assert.equal(findFrequencyPart1("+1, -2, +3, +1"), 3, "");
@@ -73,14 +75,24 @@
     });
 
 
-    QUnit.test("Day 4, part 1. Find the guard that has the most minutes asleep. What minute does that guard spend asleep the most? What is the ID of the guard you chose multiplied by the minute you chose?", function (assert) {
+    QUnit.skip("Day 4, part 1. Find the guard that has the most minutes asleep. What minute does that guard spend asleep the most? What is the ID of the guard you chose multiplied by the minute you chose?", function (assert) {
         assert.equal(findLongestSleepingGuard(mockGuardSchedule), 240);
         assert.equal(findLongestSleepingGuard(guardSchedule), 35623);
     });
 
-    QUnit.test("Day 4, part 2. Of all guards, which guard is most frequently asleep on the same minute? What is the ID of the guard you chose multiplied by the minute you chose?", function (assert) {
+    QUnit.skip("Day 4, part 2. Of all guards, which guard is most frequently asleep on the same minute? What is the ID of the guard you chose multiplied by the minute you chose?", function (assert) {
         assert.equal(findMostFrequentlyAsleepGuard(mockGuardSchedule), 4455);
         assert.equal(findMostFrequentlyAsleepGuard(guardSchedule), 23037);
+    });
+
+    QUnit.test("Day 5, part 1. How many units remain after fully reacting the polymer you scanned?", function (assert) {
+        assert.equal(reactPolymer(mockPolymer), 10);
+        assert.equal(reactPolymer(polymer), 9116);
+    });
+
+    QUnit.test("Day 5, part 2. How many units remain after fully reacting the polymer you scanned?", function (assert) {
+        assert.equal(reactPolymerRegardlessOfPolarity(mockPolymer, ['a', 'b', 'c', 'd']), 4);
+        assert.equal(reactPolymerRegardlessOfPolarity(polymer, unitTypes), 6890);
     });
 </script>
 </body>
