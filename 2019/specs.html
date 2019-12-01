@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Advent of Code 2019</title>
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">
+</head>
+<body>
+<div style="background-color: yellow"><h1>Replace QUnit.skip with QUnit.test for the tests you want to run.</h1></div>
+<div style="margin-bottom: 12px">
+    <a href="https://adventofcode.com/2019">adventofcode.com/2019</a>
+</div>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+<script src="day1.js"></script>
+<script src="day1_input.js"></script>
+
+<script>
+  QUnit.test("Day 1, part 1.", function (assert) {
+    assert.equal(calculateSumOfFuelRequirements_part1([12]), 2);
+    assert.equal(calculateSumOfFuelRequirements_part1([14]), 2);
+    assert.equal(calculateSumOfFuelRequirements_part1([1969]), 654);
+    assert.equal(calculateSumOfFuelRequirements_part1([100756]), 33583);
+    assert.equal(calculateSumOfFuelRequirements_part1(moduleMassValues), 3388015);
+  });
+
+  QUnit.test("Day 1, part 2.", function (assert) {
+    assert.equal(calculateSumOfFuelRequirements_part2([14]), 2);
+    assert.equal(calculateSumOfFuelRequirements_part2([1969]), 966);
+    assert.equal(calculateSumOfFuelRequirements_part2([100756]), 50346);
+    assert.equal(calculateSumOfFuelRequirements_part2(moduleMassValues), 5079140);
+  });
+</script>
+</body>
+</html>
