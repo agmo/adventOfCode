@@ -16,9 +16,11 @@
 <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
 <script src="day1.js"></script>
 <script src="day1_input.js"></script>
+<script src="day2.js"></script>
+<script src="day2_input.js"></script>
 
 <script>
-  QUnit.test("Day 1, part 1.", function (assert) {
+  QUnit.skip("Day 1, part 1.", function (assert) {
     assert.equal(calculateSumOfFuelRequirements_part1([12]), 2);
     assert.equal(calculateSumOfFuelRequirements_part1([14]), 2);
     assert.equal(calculateSumOfFuelRequirements_part1([1969]), 654);
@@ -26,11 +28,20 @@
     assert.equal(calculateSumOfFuelRequirements_part1(moduleMassValues), 3388015);
   });
 
-  QUnit.test("Day 1, part 2.", function (assert) {
+  QUnit.skip("Day 1, part 2.", function (assert) {
     assert.equal(calculateSumOfFuelRequirements_part2([14]), 2);
     assert.equal(calculateSumOfFuelRequirements_part2([1969]), 966);
     assert.equal(calculateSumOfFuelRequirements_part2([100756]), 50346);
     assert.equal(calculateSumOfFuelRequirements_part2(moduleMassValues), 5079140);
+  });
+
+  QUnit.test("Day 2, part 1.", function (assert) {
+    assert.deepEqual(runPrograms([1,0,0,0,99]), [2,0,0,0,99]);
+    assert.deepEqual(runPrograms([2,3,0,3,99]), [2,3,0,6,99]);
+    assert.deepEqual(runPrograms([2,4,4,5,99,0]), [2,4,4,5,99,9801]);
+    assert.deepEqual(runPrograms([1,1,1,4,99,5,6,0,99]), [30,1,1,4,2,5,6,0,99]);
+    assert.equal(runPrograms_part1([...programs]), 3409710);
+    assert.equal(runPrograms_part2([...programs]), 7912);
   });
 </script>
 </body>
