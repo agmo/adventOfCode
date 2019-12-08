@@ -23,6 +23,8 @@
 <script src="day4.js"></script>
 <script src="day6_input.js"></script>
 <script src="day6.js"></script>
+<script src="day8.js"></script>
+<script src="day8_input.js"></script>
 
 <script>
   QUnit.skip("Day 1, part 1.", function (assert) {
@@ -82,14 +84,18 @@
     assert.equal(countValidPasswords_part2(278384, 824795), 603);
   });
 
-  QUnit.test("Day 6, part 1.", function (assert) {
+  QUnit.skip("Day 6, part 1.", function (assert) {
     assert.equal(countOrbits(["COM)B", "B)C", "C)D", "D)E", "E)F", "B)G", "G)H", "D)I", "E)J", "J)K", "K)L"]), 42);
     assert.equal(countOrbits(day6_input), 315757);
   });
 
-  QUnit.test("Day 6, part 2.", function (assert) {
+  QUnit.skip("Day 6, part 2.", function (assert) {
     assert.equal(countOrbitalTransfers(["COM)B", "B)C", "C)D", "D)E", "E)F", "B)G", "G)H", "D)I", "E)J", "J)K", "K)L", "K)YOU", "I)SAN"]), 4);
     assert.equal(countOrbitalTransfers(day6_input), 481);
+  });
+
+  QUnit.test("Day 8, part 1.", function (assert) {
+    assert.equal(day8_part1(day8_input), 2064);
   });
 </script>
 </body>
