@@ -1,4 +1,4 @@
-function countOrbits_part1(orbits) {
+function countOrbits(orbits) {
   const orbitMap = mapOrbits(orbits);
   let totalOrbits = 0;
   const centerOfMass = 'COM';
@@ -21,7 +21,39 @@ function countOrbits_part1(orbits) {
   }
 }
 
+function countOrbitalTransfers(orbits) {
+  const centerOfMass = 'COM';
+  const orbitMap = mapOrbits(orbits);
+  let yourTransfersToCOM = registerTransfersToCOM(orbitMap.get('YOU'));
+  let santaTransfersToCOM = registerTransfersToCOM(orbitMap.get('SAN'));
 
+  return symmetricDifference(yourTransfersToCOM, santaTransfersToCOM).size;
+
+  ///////////////////
+  function registerTransfersToCOM(objectName) {
+    let transfers = new Set();
+
+    while(objectName !== centerOfMass) {
+      transfers.add(objectName);
+      objectName = orbitMap.get(objectName);
+    }
+
+    return transfers;
+  }
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+function symmetricDifference(setA, setB) {
+  var _difference = new Set(setA);
+  for (var elem of setB) {
+    if (_difference.has(elem)) {
+      _difference.delete(elem);
+    } else {
+      _difference.add(elem);
+    }
+  }
+  return _difference;
+}
 
 function mapOrbits(orbits) {
   const result = new Map();

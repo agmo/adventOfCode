@@ -83,8 +83,13 @@
   });
 
   QUnit.test("Day 6, part 1.", function (assert) {
-    assert.equal(countOrbits_part1(["COM)B", "B)C", "C)D", "D)E", "E)F", "B)G", "G)H", "D)I", "E)J", "J)K", "K)L"]), 42);
-    assert.equal(countOrbits_part1(day6_input), 315757);
+    assert.equal(countOrbits(["COM)B", "B)C", "C)D", "D)E", "E)F", "B)G", "G)H", "D)I", "E)J", "J)K", "K)L"]), 42);
+    assert.equal(countOrbits(day6_input), 315757);
+  });
+
+  QUnit.test("Day 6, part 2.", function (assert) {
+    assert.equal(countOrbitalTransfers(["COM)B", "B)C", "C)D", "D)E", "E)F", "B)G", "G)H", "D)I", "E)J", "J)K", "K)L", "K)YOU", "I)SAN"]), 4);
+    assert.equal(countOrbitalTransfers(day6_input), 481);
   });
 </script>
 </body>
