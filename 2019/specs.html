@@ -21,6 +21,8 @@
 <script src="day3.js"></script>
 <script src="day3_input.js"></script>
 <script src="day4.js"></script>
+<script src="day6_input.js"></script>
+<script src="day6.js"></script>
 
 <script>
   QUnit.skip("Day 1, part 1.", function (assert) {
@@ -64,7 +66,7 @@
     assert.equal(findClosesIntersection_part2(movesA, movesB), 6084);
   });
 
-  QUnit.test("Day 4, part 1.", function (assert) {
+  QUnit.skip("Day 4, part 1.", function (assert) {
     assert.ok(isValidPassword_part1(111111));
     assert.notOk(isValidPassword_part1(223450));
     assert.notOk(isValidPassword_part1(123789));
@@ -72,12 +74,17 @@
     assert.equal(countValidPasswords_part1(278384, 824795), 921);
   });
 
-  QUnit.test("Day 4, part 2.", function (assert) {
+  QUnit.skip("Day 4, part 2.", function (assert) {
     assert.ok(isValidPassword_part2(112233));
     assert.ok(isValidPassword_part2(111122));
     assert.notOk(isValidPassword_part2(123444));
     assert.notOk(isValidPassword_part2(677778));
     assert.equal(countValidPasswords_part2(278384, 824795), 603);
+  });
+
+  QUnit.test("Day 6, part 1.", function (assert) {
+    assert.equal(countOrbits_part1(["COM)B", "B)C", "C)D", "D)E", "E)F", "B)G", "G)H", "D)I", "E)J", "J)K", "K)L"]), 42);
+    assert.equal(countOrbits_part1(day6_input), 315757);
   });
 </script>
 </body>
