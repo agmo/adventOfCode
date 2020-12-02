@@ -5,11 +5,11 @@ namespace AoC2020
 {
     public static class AoCHelper
     {
-        public static List<int> GetPuzzleInput(int day)
+        public static List<string> GetPuzzleInput(int day)
         {
             var paths = new string[] {"puzzle_inputs", $"day{day}.txt"};
             var fullPath = Path.Combine(paths);
-            var result = new List<int>();
+            var result = new List<string>();
             
             using (var reader = File.OpenText(fullPath))
             {
@@ -17,8 +17,7 @@ namespace AoC2020
 
                 while (line != null)
                 {
-                    var number = int.Parse(line);
-                    result.Add(number);
+                    result.Add(line);
                     line = reader.ReadLine();
                 }
             }
