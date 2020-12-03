@@ -7,6 +7,7 @@ namespace AoC2020
     {
         public static List<string> GetPuzzleInput(int day)
         {
+            // var paths = new string[] {"puzzle_inputs", $"day{day}_example.txt"};
             var paths = new string[] {"puzzle_inputs", $"day{day}.txt"};
             var fullPath = Path.Combine(paths);
             var result = new List<string>();
