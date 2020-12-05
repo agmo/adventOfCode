@@ -7,11 +7,15 @@ namespace AoC2020
     {
         static void Main(string[] args)
         {
-            List<string> day4Input;
-            day4Input = AoCHelper.GetPuzzleInput(4);
-            Console.WriteLine(Day4.CalculatePart1(day4Input)); // 2 (example), 196
-            Console.WriteLine(Day4.CalculatePart2(day4Input)); // 114
+            List<string> day5Input;
+            day5Input = AoCHelper.GetPuzzleInput(5);
+            Console.WriteLine(Day5.CalculatePart1(day5Input)); // 820 (example), 832
+            Console.WriteLine(Day5.CalculatePart2(day5Input)); // 517
             
+            // List<string> day4Input;
+            // day4Input = AoCHelper.GetPuzzleInput(4);
+            // Console.WriteLine(Day4.CalculatePart1(day4Input)); // 2 (example), 196
+            // Console.WriteLine(Day4.CalculatePart2(day4Input)); // 114
             
             // List<string> day3Input;
             // day3Input = AoCHelper.GetPuzzleInput(3);
@@ -23,7 +27,6 @@ namespace AoC2020
             // day2Input = AoCHelper.GetPuzzleInput(2); // 439, 584
             // Console.WriteLine($"Day 2, part 1. Valid passwords: {Day2.CalculatePart1(day2Input)}");
             // Console.WriteLine($"Day 2, part 2. Valid passwords: {Day2.CalculatePart2(day2Input)}");
-
 
             // List<string> day1Input;
             // day1Input = new List<string>() {"1721", "979", "366", "299", "675", "1456"}; // Expected: 514579, 241861950
