@@ -51,7 +51,7 @@ namespace AoC2020
                     }
                 }
 
-                if (!isPassportValid || !fulfilsBasicRequirements(passport))
+                if (!isPassportValid || !FulfilsBasicRequirements(passport))
                 {
                     continue;
                 }
@@ -60,13 +60,13 @@ namespace AoC2020
                 .Select(part => part.Split(':'))
                 .ToDictionary(sp => sp[0], sp => sp[1]);
 
-                if (!isBirthYearValid(convertedPassportData["byr"]) ||
-                !isIssueYearValid(convertedPassportData["iyr"]) ||
-                !isExpirationYearValid(convertedPassportData["eyr"]) ||
-                !isHeightValid(convertedPassportData["hgt"]) ||
-                !isHairColourValid(convertedPassportData["hcl"]) ||
-                !isEyeColourValid(convertedPassportData["ecl"]) ||
-                !isPassportIdValid(convertedPassportData["pid"]))
+                if (!IsBirthYearValid(convertedPassportData["byr"]) ||
+                !IsIssueYearValid(convertedPassportData["iyr"]) ||
+                !IsExpirationYearValid(convertedPassportData["eyr"]) ||
+                !IsHeightValid(convertedPassportData["hgt"]) ||
+                !IsHairColourValid(convertedPassportData["hcl"]) ||
+                !IsEyeColourValid(convertedPassportData["ecl"]) ||
+                !IsPassportIdValid(convertedPassportData["pid"]))
                 {
                     continue;
                 }
@@ -80,29 +80,29 @@ namespace AoC2020
             return totalValidPassports;
         }
 
-        private static bool fulfilsBasicRequirements(string passportData)
+        private static bool FulfilsBasicRequirements(string passportData)
         {
             return passportData.Contains('#') &&
             passportData.Count(c => c == '#') == 1 &&
             (passportData.Contains("cm") || passportData.Contains("in"));
         }
 
-        private static bool isBirthYearValid(string birthYearData)
+        private static bool IsBirthYearValid(string birthYearData)
         {
             return birthYearData.Length == 4 && int.Parse(birthYearData) >= 1920 && int.Parse(birthYearData) <= 2002;
         }
 
-        private static bool isIssueYearValid(string issueYearData)
+        private static bool IsIssueYearValid(string issueYearData)
         {
             return issueYearData.Length == 4 && int.Parse(issueYearData) >= 2010 && int.Parse(issueYearData) <= 2020;
         }
 
-        private static bool isExpirationYearValid(string expirationYearData)
+        private static bool IsExpirationYearValid(string expirationYearData)
         {
             return expirationYearData.Length == 4 && int.Parse(expirationYearData) >= 2020 && int.Parse(expirationYearData) <= 2030;
         }
 
-        private static bool isHeightValid(string heightData)
+        private static bool IsHeightValid(string heightData)
         {
             var unit = heightData.Substring(heightData.Length - 2);
             var height = int.Parse(heightData.Substring(0, heightData.Length - 2));
@@ -120,19 +120,19 @@ namespace AoC2020
             return isHeightValid;
         }
 
-        private static bool isHairColourValid(string hairColourData)
+        private static bool IsHairColourValid(string hairColourData)
         {
             var pattern = new Regex("^#[0-9a-f]{6}$");
 
             return pattern.IsMatch(hairColourData);
         }
 
-        private static bool isEyeColourValid(string eyeColourData)
+        private static bool IsEyeColourValid(string eyeColourData)
         {
             return Array.Exists(eyeColours, eyeColour => eyeColour == eyeColourData);
         }
 
-        private static bool isPassportIdValid(string passportId)
+        private static bool IsPassportIdValid(string passportId)
         {
             var pattern = new Regex("^[0-9]{9}$");
 

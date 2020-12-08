@@ -11,7 +11,7 @@ namespace AoC2020
 
             foreach (var input in puzzleInput)
             {
-                if (isPasswordValidPart1(input))
+                if (IsPasswordValidPart1(input))
                 {
                     validPswCount += 1;
                 }
@@ -26,7 +26,7 @@ namespace AoC2020
 
             foreach (var input in puzzleInput)
             {
-                if (isPasswordValidPart2(input))
+                if (IsPasswordValidPart2(input))
                 {
                     validPswCount += 1;
                 }
@@ -35,7 +35,7 @@ namespace AoC2020
             return validPswCount;
         }
 
-        private static bool isPasswordValidPart1(string s)
+        private static bool IsPasswordValidPart1(string s)
         {
             char[] separators = new char[] { '-', ' ', ':' };
 
@@ -74,7 +74,7 @@ namespace AoC2020
             return isPasswordValid;
         }
 
-        private static bool isPasswordValidPart2(string s)
+        private static bool IsPasswordValidPart2(string s)
         {
             char[] separators = new char[] { '-', ' ', ':' };
 

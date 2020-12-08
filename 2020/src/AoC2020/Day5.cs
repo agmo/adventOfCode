@@ -11,8 +11,8 @@ namespace AoC2020
 
             foreach (var boardingPass in boardingPasses)
             {
-                var rowNumber = getRowNumber(boardingPass);
-                var columnNumber = getColumnNumber(boardingPass);
+                var rowNumber = GetRowNumber(boardingPass);
+                var columnNumber = GetColumnNumber(boardingPass);
                 var currentSeatId = rowNumber * 8 + columnNumber;
                 
                 if (currentSeatId > highestSeatId)
@@ -32,8 +32,8 @@ namespace AoC2020
 
             foreach (var boardingPass in boardingPasses)
             {
-                var rowNumber = getRowNumber(boardingPass);
-                var columnNumber = getColumnNumber(boardingPass);
+                var rowNumber = GetRowNumber(boardingPass);
+                var columnNumber = GetColumnNumber(boardingPass);
                 var currentSeatId = rowNumber * 8 + columnNumber;
 
                 if (currentSeatId > highestSeatId)
@@ -55,7 +55,7 @@ namespace AoC2020
             return expectedSumOfIdsInRange - actualSumOfIdsInRange;
         }
 
-        private static int getRowNumber(string boardingPass)
+        private static int GetRowNumber(string boardingPass)
         {
             var rowLowerRange = 0;
             var rowUpperRange = 127;
@@ -83,7 +83,7 @@ namespace AoC2020
             return rowNumber;
         }
 
-        private static int getColumnNumber(string boardingPass)
+        private static int GetColumnNumber(string boardingPass)
         {
             var seatLowerRange = 0;
             var seatUpperRange = 7;
