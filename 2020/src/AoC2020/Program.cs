@@ -10,7 +10,7 @@ namespace AoC2020
             List<string> day11Input;
             day11Input = AoCHelper.GetPuzzleInput(11);
             Console.WriteLine(Day11.CalculatePart1(day11Input)); // 37 (example), 2346
-            // Console.WriteLine(Day11.CalculatePart2(day11Input)); // ..
+            Console.WriteLine(Day11.CalculatePart2(day11Input)); // 26 (example), 2111
             
             // List<string> day10Input;
             // day10Input = AoCHelper.GetPuzzleInput(10);
