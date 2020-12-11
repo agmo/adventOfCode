@@ -7,9 +7,14 @@ namespace AoC2020
     {
         static void Main(string[] args)
         {
-            List<string> day10Input;
-            day10Input = AoCHelper.GetPuzzleInput(10);
-            Console.WriteLine(Day10.CalculatePart1(day10Input)); // 35 (example 1), 220 (example 2), 1856
+            List<string> day11Input;
+            day11Input = AoCHelper.GetPuzzleInput(11);
+            Console.WriteLine(Day11.CalculatePart1(day11Input)); // 37 (example), 2346
+            // Console.WriteLine(Day11.CalculatePart2(day11Input)); // ..
+            
+            // List<string> day10Input;
+            // day10Input = AoCHelper.GetPuzzleInput(10);
+            // Console.WriteLine(Day10.CalculatePart1(day10Input)); // 35 (example 1), 220 (example 2), 1856
             // Console.WriteLine(Day10.CalculatePart2(day10Input)); // 8 (example 1)
             
             // List<string> day9Input;
