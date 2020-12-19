@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace AoC2020
 {
@@ -7,10 +8,21 @@ namespace AoC2020
     {
         static void Main(string[] args)
         {
-            List<string> day16Input;
-            day16Input = AoCHelper.GetPuzzleInput(16);
-            Console.WriteLine(Day16.CalculatePart1(day16Input)); // 71 (example), 25916
-            Console.WriteLine(Day16.CalculatePart2(day16Input)); // 2564529489989
+            List<string> day18Input;
+            day18Input = AoCHelper.GetPuzzleInput(18);
+            // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"1 + 2 * 3 + 4 * 5 + 6"})); // 71 (example)
+            // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"1 + (2 * 3) + (4 * (5 + 6))"})); // 51 (example)
+            // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"2 * 3 + (4 * 5)"})); // 26 (example)
+            // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"5 + (8 * 3 + 9 + 3 * 4 * 3)"})); // 437 (example)
+            // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))"})); // 12240 (example)
+            // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2", "5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))"})); // 13632 + 12240 (example)
+            // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"9 + 7 * (4 * 8 + 3 * 2 * 9 + 4) + ((6 * 8) + 3 + 7 + 7 * 8 * (9 + 5)) * 9 + ((3 * 9 * 8 * 8) + (5 + 2) + 2 * 4 * 3 + 8)"})); //  (example)
+            // Console.WriteLine(Day18.CalculatePart1(day18Input)); // 26457 (example), 7293529867931
+
+            // List<string> day16Input;
+            // day16Input = AoCHelper.GetPuzzleInput(16);
+            // Console.WriteLine(Day16.CalculatePart1(day16Input)); // 71 (example), 25916
+            // Console.WriteLine(Day16.CalculatePart2(day16Input)); // 2564529489989
 
             // Console.WriteLine(Day15.CalculateDay15(new [] {0, 3, 6}, 2020)); // 436 (example)
             // Console.WriteLine(Day15.CalculateDay15(new [] {0, 3, 6}, 30000000)); // 175594 (example)
@@ -24,7 +36,7 @@ namespace AoC2020
             // Console.WriteLine(DateTime.Now);
             // Console.WriteLine(Day15.CalculateDay15(new [] {16, 11, 15, 0, 1, 7}, 30000000)); // 37312
             // Console.WriteLine(DateTime.Now);
-            
+
             // List<string> day13Input;
             // day13Input = AoCHelper.GetPuzzleInput(13);
             // Console.WriteLine(Day13.CalculatePart1(day13Input)); // 295 (example), 2845
