@@ -88,5 +88,66 @@ namespace AoC2020
 
             return manhattanDistance;
         }
+
+        public static int CalculatePart2(List<string> instructions)
+        {
+            var manhattanDistance = 0;
+            var shipCoords = new Coords(0, 0);
+            var waypointCoords = new Coords(shipCoords.X + 10, shipCoords.Y + 1);
+
+            foreach (var instruction in instructions)
+            {
+                int value = int.Parse(instruction.Substring(1));
+
+                switch (instruction.Substring(0, 1))
+                {
+                    case "N":
+                        waypointCoords.Y += value;
+                        break;
+
+                    case "E":
+                        waypointCoords.X += value;
+                        break;
+
+                    case "S":
+                        waypointCoords.Y -= value;
+                        break;
+
+                    case "W":
+                        waypointCoords.X -= value;
+                        break;
+
+                    case "F":
+                    shipCoords.X += value * waypointCoords.X;
+                    shipCoords.Y += value * waypointCoords.Y;
+                        break;
+                }
+
+                if (instruction == "R180" || instruction == "L180")
+                {
+                    waypointCoords.X = waypointCoords.X * -1;
+                    waypointCoords.Y = waypointCoords.Y * -1;
+                }
+
+                if (instruction == "R90" || instruction == "L270")
+                {
+                    var tempX = waypointCoords.X;
+                    waypointCoords.X = waypointCoords.Y;
+                    waypointCoords.Y = tempX * -1;
+                }
+
+                if (instruction == "R270" || instruction == "L90")
+                {
+                    var tempX = waypointCoords.X;
+                    waypointCoords.X = waypointCoords.Y * -1;
+                    waypointCoords.Y = tempX;
+                }
+            }
+
+            manhattanDistance = Math.Abs(shipCoords.X) + Math.Abs(shipCoords.Y);
+
+            return manhattanDistance;
+        }
+    
     }
 }
