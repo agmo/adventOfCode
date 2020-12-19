@@ -18,6 +18,13 @@ namespace AoC2020
             // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2", "5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))"})); // 13632 + 12240 (example)
             // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"9 + 7 * (4 * 8 + 3 * 2 * 9 + 4) + ((6 * 8) + 3 + 7 + 7 * 8 * (9 + 5)) * 9 + ((3 * 9 * 8 * 8) + (5 + 2) + 2 * 4 * 3 + 8)"})); //  (example)
             // Console.WriteLine(Day18.CalculatePart1(day18Input)); // 26457 (example), 7293529867931
+            // Console.WriteLine(Day18.CalculatePart2(new List<string>() {"1 + 2 * 3 + 4 * 5 + 6"})); // 231 (example)
+            // Console.WriteLine(Day18.CalculatePart2(new List<string>() {"1 + (2 * 3) + (4 * (5 + 6))"})); // 51 (example)
+            // Console.WriteLine(Day18.CalculatePart2(new List<string>() {"2 * 3 + (4 * 5)"})); // 46 (example)
+            // Console.WriteLine(Day18.CalculatePart2(new List<string>() {"5 + (8 * 3 + 9 + 3 * 4 * 3)"})); // 1445 (example)
+            // Console.WriteLine(Day18.CalculatePart2(new List<string>() {"5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))"})); // 669060 (example)
+            // Console.WriteLine(Day18.CalculatePart2(new List<string>() {"((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2"})); // 23340 (example)
+            Console.WriteLine(Day18.CalculatePart2(day18Input)); // 60807587180737
 
             // List<string> day16Input;
             // day16Input = AoCHelper.GetPuzzleInput(16);
