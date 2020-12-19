@@ -8,8 +8,8 @@ namespace AoC2020
     {
         static void Main(string[] args)
         {
-            List<string> day18Input;
-            day18Input = AoCHelper.GetPuzzleInput(18);
+            // List<string> day18Input;
+            // day18Input = AoCHelper.GetPuzzleInput(18);
             // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"1 + 2 * 3 + 4 * 5 + 6"})); // 71 (example)
             // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"1 + (2 * 3) + (4 * (5 + 6))"})); // 51 (example)
             // Console.WriteLine(Day18.CalculatePart1(new List<string>() {"2 * 3 + (4 * 5)"})); // 26 (example)
@@ -24,7 +24,7 @@ namespace AoC2020
             // Console.WriteLine(Day18.CalculatePart2(new List<string>() {"5 + (8 * 3 + 9 + 3 * 4 * 3)"})); // 1445 (example)
             // Console.WriteLine(Day18.CalculatePart2(new List<string>() {"5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))"})); // 669060 (example)
             // Console.WriteLine(Day18.CalculatePart2(new List<string>() {"((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2"})); // 23340 (example)
-            Console.WriteLine(Day18.CalculatePart2(day18Input)); // 60807587180737
+            // Console.WriteLine(Day18.CalculatePart2(day18Input)); // 60807587180737
 
             // List<string> day16Input;
             // day16Input = AoCHelper.GetPuzzleInput(16);
@@ -48,6 +48,10 @@ namespace AoC2020
             // day13Input = AoCHelper.GetPuzzleInput(13);
             // Console.WriteLine(Day13.CalculatePart1(day13Input)); // 295 (example), 2845
             // Console.WriteLine(Day13.CalculatePart2(day13Input)); // 1068781 (example), 3417 (example 2), 487905974205117
+
+            List<string> day12Input;
+            day12Input = AoCHelper.GetPuzzleInput(12);
+            Console.WriteLine(Day12.CalculatePart1(day12Input)); // 25 (example), 364
 
             // List<string> day11Input;
             // day11Input = AoCHelper.GetPuzzleInput(11);
