@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace AoC2020
 {
@@ -24,6 +26,18 @@ namespace AoC2020
         public List<string> TileData { get; }
 
         public Coords Coords { get; }
+    }
+
+    public class WaterRoughnessData
+    {
+        public WaterRoughnessData(int totalHashes, int seaMonsterCount)
+        {
+            TotalHashes = totalHashes;
+            SeaMonsterCount = seaMonsterCount;
+        }
+
+        public int TotalHashes { get; }
+        public int SeaMonsterCount { get; }
     }
     public static class Day20
     {
@@ -112,6 +126,174 @@ namespace AoC2020
             return corner1Id * corner2Id * corner3Id * corner4Id;
         }
 
+        public static long CalculatePart2(List<string> input)
+        {
+            List<List<string>> tiles = ConvertToTiles(input);
+            var queue = new Queue<Tile>();
+            queue.Enqueue(new Tile(tiles[0][0], tiles[0].GetRange(1, tiles[0].Count - 1), new Coords(0, 0)));
+            tiles.RemoveAt(0);
+            var tileCoordsMap = new List<Tile>() { queue.Peek() };
+
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+                var positionsToCheck = Enum.GetNames(typeof(MatchTypes)).Length;
+
+                for (int i = 0; i < positionsToCheck; i++)
+                {
+                    var match = FindMatches(current, (MatchTypes)i, tiles);
+
+                    if (match.TileId != null)
+                    {
+                        queue.Enqueue(match);
+                        tileCoordsMap.Add(match);
+                    }
+                }
+            }
+
+            var minX = int.MaxValue;
+            var maxX = int.MinValue;
+            var minY = int.MaxValue;
+            var maxY = int.MinValue;
+
+            foreach (var item in tileCoordsMap)
+            {
+                if (item.Coords.X < minX)
+                {
+                    minX = item.Coords.X;
+                }
+
+                if (item.Coords.X > maxX)
+                {
+                    maxX = item.Coords.X;
+                }
+
+                if (item.Coords.Y < minY)
+                {
+                    minY = item.Coords.Y;
+                }
+
+                if (item.Coords.Y > maxY)
+                {
+                    maxY = item.Coords.Y;
+                }
+            }
+
+            var image = MergeIntoImage(RemoveBorders(tileCoordsMap), minX, maxX, minY, maxY);
+            var monsterHashCount = 15;
+            long result = 0;
+
+            foreach (var method in methodsToCall)
+            {
+                var processedImage = method.Invoke(image);
+                var waterRoughnessData = FindSeaMonsters(processedImage);
+
+                if (waterRoughnessData.SeaMonsterCount > 0)
+                {
+                    result = waterRoughnessData.TotalHashes - waterRoughnessData.SeaMonsterCount * monsterHashCount;
+                    break;
+
+                }
+            }
+
+            return result;
+        }
+
+        private static WaterRoughnessData FindSeaMonsters(List<string> image)
+        {
+            // Sea Monster:
+            //                   #  
+            // #    ##    ##    ### (regex Body)
+            //  #  #  #  #  #  #    (regex Feet)
+
+            var monsterCount = 0;
+            var hashCount = 0;
+
+            for (int i = 0; i < image.Count; i++)
+            {
+                hashCount += image[i].Count(c => c == '#');
+
+                if (i == 0 || i == image.Count - 1)
+                {
+                    continue;
+                }
+
+                var seaMonsterBodyRegex = new Regex("(#.{4}##.{4}##.{4}###)");
+                var bodyMatches = seaMonsterBodyRegex.Matches(image[i]);
+
+                if (bodyMatches.Count == 0)
+                {
+                    continue;
+                }
+
+                foreach (Match bodyMatch in bodyMatches)
+                {
+                    var seaMonsterFeetRegex = new Regex("(#.{2}#.{2}#.{2}#.{2}#.{2}#)");
+                    var feetMatch = seaMonsterFeetRegex.Match(image[i + 1].Substring(bodyMatch.Index + 1, 16));
+
+                    if (!feetMatch.Success)
+                    {
+                        continue;
+                    }
+
+                    var headMatch = image[i - 1][bodyMatch.Index + 18] == '#';
+
+                    if (headMatch)
+                    {
+                        monsterCount += 1;
+                    }
+                }
+            }
+
+            return new WaterRoughnessData(hashCount, monsterCount);
+        }
+
+        private static List<Tile> RemoveBorders(List<Tile> tileCoordsMap)
+        {
+            foreach (var tile in tileCoordsMap)
+            {
+                tile.TileData.RemoveAt(0);
+                tile.TileData.RemoveAt(tile.TileData.Count - 1);
+
+                for (int i = 0; i < tile.TileData.Count; i++)
+                {
+                    var row = tile.TileData[i];
+                    tile.TileData[i] = row.Substring(1, row.Length - 2);
+                }
+            }
+
+            return tileCoordsMap;
+        }
+
+        private static List<string> MergeIntoImage(List<Tile> tileCoordsMap, int minX, int maxX, int minY, int maxY)
+        {
+            var image = new List<string>();
+
+            for (int i = minX; i <= maxX; i++)
+            {
+                for (int j = maxY, k = 0; j >= minY; j--, k++)
+                {
+                    var currentTile = tileCoordsMap.Find(item => item.Coords.X == i && item.Coords.Y == j);
+
+                    for (int l = 0; l < currentTile.TileData.Count; l++)
+                    {
+                        var addAtIndex = currentTile.TileData.Count * k + l;
+
+                        try
+                        {
+                            image[addAtIndex] = image[addAtIndex] += currentTile.TileData[l];
+                        }
+                        catch (System.Exception)
+                        {
+
+                            image.Add(currentTile.TileData[l]);
+                        }
+                    }
+                }
+            }
+
+            return image;
+        }
 
         private static List<string> FlipVertically(List<string> tile)
         {
