@@ -31,27 +31,29 @@ namespace AoC2020
             }
 
             var cyclesToPerform = 6;
+            var totalActive = 0;
 
             for (int cycle = 1; cycle <= cyclesToPerform; cycle++)
             {
-                // Expand z-coordinates:
+                // Expand z-coordinates (only z > 0 because z < 0 is mirrored):
                 for (int y = initialState.Count + cycle - 2; y >= (cycle - 1) * -1; y--)
                 {
                     for (int x = (cycle - 1) * -1; x < initialState.Count + cycle - 1; x++)
                     {
-                        coords.Add(new XYZCoords(x, y, cycle * -1), '.');
                         coords.Add(new XYZCoords(x, y, cycle), '.');
                     }
                 }
 
                 // Expand current region by an extra coordinate on each side: 
                 var minX = cycle * -1;
+                var minY = minX;
                 var maxY = initialState.Count + cycle - 1;
+                var maxX = maxY;
                 var sides = 4;
 
                 for (int i = 0, x = minX, y = maxY; i < (initialState.Count + cycle * 2) * sides - 4; i++)
                 {
-                    for (int z = cycle * -1; z <= cycle; z++)
+                    for (int z = 0; z <= cycle; z++)
                     {
                         coords.Add(new XYZCoords(x, y, z), '.');
                     }
@@ -75,54 +77,65 @@ namespace AoC2020
                 }
 
                 var postCycleCoords = new Dictionary<XYZCoords, char>(coords);
+                var cycleTotal = 0;
 
                 foreach (var cube in coords)
                 {
                     var activeNeighbourCount = 0;
-                    var neigh = 1;
 
-                    for (int x = cube.Key.X - 1; x <= cube.Key.X + 1; x++)
+                    for (int x = Math.Max(minX, cube.Key.X - 1); x <= Math.Min(maxX, cube.Key.X + 1); x++)
                     {
-                        for (int y = cube.Key.Y - 1; y <= cube.Key.Y + 1; y++)
+                        for (int y = Math.Max(minY, cube.Key.Y - 1); y <= Math.Min(maxY, cube.Key.Y + 1); y++)
                         {
-                            for (int z = cube.Key.Z - 1; z <= cube.Key.Z + 1; z++)
+                            for (int z = Math.Max(0, cube.Key.Z - 1); z <= Math.Min(cycle, cube.Key.Z + 1); z++)
                             {
                                 if (x == cube.Key.X && y == cube.Key.Y && z == cube.Key.Z)
                                 {
                                     continue;
                                 }
-                                neigh++;
 
-                                if (coords.ContainsKey(new XYZCoords(x, y, z)) && coords[new XYZCoords(x, y, z)] == '#')
+                                var currentCoords = new XYZCoords(x, y, z);
+
+                                if (coords[currentCoords] == '#')
                                 {
-                                    activeNeighbourCount += 1;
+                                    if (cube.Key.Z == 0 && currentCoords.Z > 0)
+                                    {
+                                        activeNeighbourCount += 2;
+                                    }
+                                    else
+                                    {
+                                        activeNeighbourCount += 1;
+                                    }
                                 }
                             }
                         }
                     }
 
-                    if (cube.Value == '#' && (activeNeighbourCount < 2 || activeNeighbourCount > 3))
+                    if (cube.Value == '#')
                     {
-                        postCycleCoords[cube.Key] = '.';
+                        if ((activeNeighbourCount < 2 || activeNeighbourCount > 3))
+                        {
+                            postCycleCoords[cube.Key] = '.';
+                        }
+                        else
+                        {
+                            cycleTotal += cube.Key.Z == 0 ? 1 : 2; // For mirrored z, count * 2.
+                        }
                     }
                     else if (cube.Value == '.' && activeNeighbourCount == 3)
                     {
                         postCycleCoords[cube.Key] = '#';
+                        cycleTotal += cube.Key.Z == 0 ? 1 : 2;
                     }
                 }
 
                 coords = new Dictionary<XYZCoords, char>(postCycleCoords);
                 // Uncomment to output results to the console:
                 // DrawPart1FinalState(cycle, coords);
-            }
 
-            var totalActive = 0;
-
-            foreach (var item in coords)
-            {
-                if (item.Value == '#')
+                if (cycle == cyclesToPerform)
                 {
-                    totalActive++;
+                    totalActive = cycleTotal;
                 }
             }
 
@@ -134,7 +147,7 @@ namespace AoC2020
             var cycles = 6;
 
             Console.WriteLine($"Cycle {cycle}");
-            for (int z = cycles * -1; z <= cycles; z++)
+            for (int z = 0; z <= cycles; z++)
             {
                 Console.WriteLine($"z {z}");
                 for (int i = 0, y = 13; i < 20; i++, y--)
