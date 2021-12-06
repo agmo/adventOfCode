@@ -1,8 +1,7 @@
 package com.adventofcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.IntStream;
 
 class BoardItem {
     private final int val;
@@ -57,6 +56,59 @@ public class Day4 {
         }
 
         return finalScore;
+    }
+
+    public static int calculatePart2(List<String> puzzleInput) {
+        var drawnNumbers = getDrawnNumbers(puzzleInput);
+        var boards = getBoards(puzzleInput);
+        int lastWinningBoardIndex = 0;
+        int lastWinningDrawnNumberIndex = 0;
+        Set<Integer> winningBoardIndexes = new HashSet<>();
+
+        for (int i = 0; i < drawnNumbers.length; i++) {
+            for (int j = 0; j < boards.size(); j++) {
+
+                var board = boards.get(j);
+
+                for (var row : board) {
+                    for (var item : row) {
+                        if (item.getVal() == drawnNumbers[i]) {
+                            item.setMarked(true);
+
+                            if (i > boardSize - 1 && !winningBoardIndexes.contains(j)) {
+                                boolean boardWins = checkIfBoardWins(board);
+
+                                if (boardWins) {
+                                    winningBoardIndexes.add(j);
+                                    lastWinningBoardIndex = j;
+                                    lastWinningDrawnNumberIndex = i;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        var winningBoard = boards.get(lastWinningBoardIndex);
+        var numbersDrawnAfterWinningBoardFound = Arrays.copyOfRange(
+                drawnNumbers, lastWinningDrawnNumberIndex + 1, drawnNumbers.length
+        );
+        var winningBoardUnmarked = unmarkBoard(winningBoard, numbersDrawnAfterWinningBoardFound);
+
+        return getSumOfUnmarkedNumbers(winningBoardUnmarked) * drawnNumbers[lastWinningDrawnNumberIndex];
+    }
+
+    private static ArrayList<List<BoardItem>> unmarkBoard(ArrayList<List<BoardItem>> board, int[] numbersToUnmark) {
+        for (var row : board) {
+            for (var item : row) {
+                if (IntStream.of(numbersToUnmark).anyMatch(x -> x == item.getVal())) {
+                    item.setMarked(false);
+                }
+            }
+        }
+
+        return board;
     }
 
     private static int getSumOfUnmarkedNumbers(ArrayList<List<BoardItem>> board) {
