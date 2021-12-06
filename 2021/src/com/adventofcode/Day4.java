@@ -155,8 +155,8 @@ public class Day4 {
         return completeColumns > 0;
     }
 
-    private static int[] getDrawnNumbers(List<String> puzzleIntput) {
-        return Arrays.stream(puzzleIntput.get(0).split(",")).mapToInt(Integer::parseInt).toArray();
+    private static int[] getDrawnNumbers(List<String> puzzleInput) {
+        return Arrays.stream(puzzleInput.get(0).split(",")).mapToInt(Integer::parseInt).toArray();
     }
 
     private static ArrayList<ArrayList<List<BoardItem>>> getBoards(List<String> puzzleInput) {
