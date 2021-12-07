@@ -38,6 +38,6 @@ public class Main {
          List<String> day7Input = AoCHelper.getPuzzleInput(7);
         assert day7Input != null;
         System.out.println(Day7.calculatePart1(day7Input)); // example 37; 345035
-//        System.out.println(Day7.calculatePart2(day7Input)); // example
+        System.out.println(Day7.calculatePart2(day7Input)); // example 168; 97038163
     }
 }
