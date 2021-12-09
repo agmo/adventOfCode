@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class AoCHelper {
     public static List<String> getPuzzleInput(int day) {
 //        var fullPath = Paths.get("puzzleInputs", String.format("day%s_example.txt", day));
+//        var fullPath = Paths.get("puzzleInputs", String.format("day%s_example2.txt", day));
         var fullPath = Paths.get("puzzleInputs", String.format("day%s.txt", day));
         var result = new ArrayList<String>();
 
