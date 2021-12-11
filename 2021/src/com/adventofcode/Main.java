@@ -47,8 +47,7 @@ public class Main {
 
         List<String> day9Input = AoCHelper.getPuzzleInput(9);
         assert day9Input != null;
-        System.out.println(Day9.calculatePart1(day9Input)); // example 15; 512
-//        System.out.println(Day9.calculatePart2(day9Input)); // example
+//        System.out.println(Day9.calculatePart1(day9Input)); // example 15; 512
+        System.out.println(Day9.calculatePart2(day9Input)); // example 1134; 1600104
     }
 }
-// 1842 too high
