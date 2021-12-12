@@ -45,9 +45,14 @@ public class Main {
 //        System.out.println(Day8.calculatePart1(day8Input)); // example 26; 548
 //        System.out.println(Day8.calculatePart2(day8Input)); // example 61229; 1074888
 
-        List<String> day9Input = AoCHelper.getPuzzleInput(9);
-        assert day9Input != null;
+//        List<String> day9Input = AoCHelper.getPuzzleInput(9);
+//        assert day9Input != null;
 //        System.out.println(Day9.calculatePart1(day9Input)); // example 15; 512
-        System.out.println(Day9.calculatePart2(day9Input)); // example 1134; 1600104
+//        System.out.println(Day9.calculatePart2(day9Input)); // example 1134; 1600104
+
+        List<String> day10Input = AoCHelper.getPuzzleInput(10);
+        assert day10Input != null;
+        System.out.println(Day10.calculatePart1(day10Input)); // example 26397; 362271
+//        System.out.println(Day10.calculatePart2(day10Input)); // example
     }
 }
