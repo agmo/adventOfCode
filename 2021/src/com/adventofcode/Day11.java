@@ -97,6 +97,67 @@ public class Day11 {
         return totalFlashes;
     }
 
+    public static int calculatePart2(List<String> puzzleInput) {
+        int flashCount = 0;
+        int step = 0;
+        Map<Coords, Octopus> octopusMap = convertToOctopusMap(puzzleInput);
+//        printOctopusMap(octopusMap, puzzleInput.size() - 1, 0);
+
+        while (flashCount != puzzleInput.size() * puzzleInput.get(0).length()) {
+            flashCount = 0;
+            List<Coords> adjacentOctopusesCoords = new ArrayList<>();
+
+            for (var octopus : octopusMap.entrySet()) {
+                int currentEnergy = octopus.getValue().getEnergyLevel();
+                octopus.getValue().setEnergyLevel(currentEnergy + 1);
+
+                if (octopus.getValue().getEnergyLevel() == 10) {
+                    adjacentOctopusesCoords.addAll(octopus.getValue().getAdjacentLocations());
+                    octopus.getValue().setFlashed(true);
+                    flashCount++;
+                }
+            }
+
+            while (adjacentOctopusesCoords.size() > 0) {
+                List<Coords> newNeighbours = new ArrayList<>();
+
+                for (var coords : adjacentOctopusesCoords) {
+                    var octopus = octopusMap.get(coords);
+                    int currentEnergy = octopus.getEnergyLevel();
+
+                    if (currentEnergy == 10) {
+                        continue;
+                    }
+
+                    octopus.setEnergyLevel(currentEnergy + 1);
+
+                    if (octopus.getEnergyLevel() == 10) {
+                        newNeighbours.addAll(octopus.getAdjacentLocations());
+                        octopus.setFlashed(true);
+                        flashCount++;
+                    }
+                }
+
+                adjacentOctopusesCoords.clear();
+                adjacentOctopusesCoords.addAll(newNeighbours);
+            }
+
+//            printOctopusMap(octopusMap, puzzleInput.size() - 1, step + 1);
+
+            for (var octopus : octopusMap.entrySet()) {
+                octopus.getValue().setFlashed(false);
+
+                if (octopus.getValue().getEnergyLevel() > 9) {
+                    octopus.getValue().setEnergyLevel(0);
+                }
+            }
+
+            step++;
+        }
+
+        return step;
+    }
+
     private static Map<Coords, Octopus> convertToOctopusMap(List<String> input) {
         Map<Coords, Octopus> octopusMap = new HashMap<>();
 
