@@ -1,7 +1,5 @@
 package com.adventofcode;
 
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -65,9 +63,12 @@ public class Main {
 //        System.out.println(Day13.calculateDay13(day13Input, 1)); // example 17; 675
 //        System.out.println(Day13.calculateDay13(day13Input, 2)); // HZKHFEJZ (answer printed to the console)
 
-        List<String> day14Input = AoCHelper.getPuzzleInput(14);
-        assert day14Input != null;
-        System.out.println(Day14.calculatePart1(day14Input)); // example 1588; 4244
+//        List<String> day14Input = AoCHelper.getPuzzleInput(14);
+//        assert day14Input != null;
+//        System.out.println(Day14.calculatePart1(day14Input)); // example 1588; 4244
 //        System.out.println(Day14.calculatePart1(day14Input, 2));
+
+        System.out.println(Day21.calculatePart1()); // 908091 (example: should be 715 * 993?)
+//        System.out.println(Day21.calculatePart2());
     }
 }
