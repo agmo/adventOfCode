@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Advent of Code 2022</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.19.3.css">
+<body>
+<!--Replace QUnit.skip with QUnit.test for the tests you want to run.-->
+<!--adventofcode.com/2022-->
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script src="https://code.jquery.com/qunit/qunit-2.19.3.js"></script>
+<script src="day1.js"></script>
+<script src="day1_input.js"></script>
+<script>
+  QUnit.skip("Day 1, part 1.", function (assert) {
+    assert.equal(findElfCarryingMostCalories(calories), 69693);
+  });
+
+  QUnit.skip("Day 1, part 2.", function (assert) {
+    assert.equal(findTopThreeElvesCalorieTotal(calories), 200945);
+  });
+</script>
+</body>
