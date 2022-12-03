@@ -33,9 +33,14 @@
     assert.equal(calculateTotalScorePart2(strategyGuide), 14859);
   });
 
-  QUnit.test("Day 3, part 1.", function (assert) {
+  QUnit.skip("Day 3, part 1.", function (assert) {
     assert.equal(calculatePrioritiesSumPart1(testRucksackContents), 157);
     assert.equal(calculatePrioritiesSumPart1(rucksackContents), 7850);
+  });
+
+  QUnit.test("Day 3, part 2.", function (assert) {
+    assert.equal(calculatePrioritiesSumPart2(testRucksackContents), 70);
+    assert.equal(calculatePrioritiesSumPart2(rucksackContents), 2581);
   });
 </script>
 </body>
