@@ -21,9 +21,14 @@
     assert.equal(findTopThreeElvesCalorieTotal(calories), 200945);
   });
 
-  QUnit.test("Day 2, part 1. Rock Paper Scissors.", function (assert) {
-    assert.equal(calculateTotalScore(testStrategyGuide), 15);
-    assert.equal(calculateTotalScore(strategyGuide), 15);
+  QUnit.skip("Day 2, part 1. Rock Paper Scissors.", function (assert) {
+    assert.equal(calculateTotalScorePart1(testStrategyGuide), 15);
+    assert.equal(calculateTotalScorePart1(strategyGuide), 10310);
+  });
+
+  QUnit.test("Day 2, part 2. Rock Paper Scissors.", function (assert) {
+    assert.equal(calculateTotalScorePart2(testStrategyGuide), 12);
+    assert.equal(calculateTotalScorePart2(strategyGuide), 14859);
   });
 </script>
 </body>
