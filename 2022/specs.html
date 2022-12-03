@@ -10,8 +10,10 @@
 <script src="https://code.jquery.com/qunit/qunit-2.19.3.js"></script>
 <script src="day1.js"></script>
 <script src="day2.js"></script>
+<script src="day3.js"></script>
 <script src="day1_input.js"></script>
 <script src="day2_input.js"></script>
+<script src="day3_input.js"></script>
 <script>
   QUnit.skip("Day 1, part 1.", function (assert) {
     assert.equal(findElfCarryingMostCalories(calories), 69693);
@@ -26,9 +28,14 @@
     assert.equal(calculateTotalScorePart1(strategyGuide), 10310);
   });
 
-  QUnit.test("Day 2, part 2. Rock Paper Scissors.", function (assert) {
+  QUnit.skip("Day 2, part 2. Rock Paper Scissors.", function (assert) {
     assert.equal(calculateTotalScorePart2(testStrategyGuide), 12);
     assert.equal(calculateTotalScorePart2(strategyGuide), 14859);
+  });
+
+  QUnit.test("Day 3, part 1.", function (assert) {
+    assert.equal(calculatePrioritiesSumPart1(testRucksackContents), 157);
+    assert.equal(calculatePrioritiesSumPart1(rucksackContents), 7850);
   });
 </script>
 </body>
