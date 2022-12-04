@@ -45,9 +45,14 @@
     assert.equal(calculatePrioritiesSumPart2(rucksackContents), 2581);
   });
 
-  QUnit.test("Day 4, part 1.", function (assert) {
+  QUnit.skip("Day 4, part 1.", function (assert) {
     assert.equal(findFullyContainedSectionAssignments(testSectionAssignments), 2);
     assert.equal(findFullyContainedSectionAssignments(sectionAssignments), 453);
+  });
+
+  QUnit.skip("Day 4, part 2.", function (assert) {
+    assert.equal(findOverlappingSectionAssignments(testSectionAssignments), 4);
+    assert.equal(findOverlappingSectionAssignments(sectionAssignments), 919);
   });
 </script>
 </body>

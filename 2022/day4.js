@@ -9,7 +9,7 @@ function findFullyContainedSectionAssignments(sectionAssignments) {
 
   return result;
 
-  // Checks for overlapping, specifically whether one range is FULLY contained in the other.
+  // Checks whether one range is FULLY contained in the other and not if they partially overlap.
   function isFullyContained(rangePair) {
     // Sort so that the first range is the one that starts with a lower value or is the longer one.
     rangePair.sort((a, b) => {
@@ -29,5 +29,26 @@ function findFullyContainedSectionAssignments(sectionAssignments) {
     const secondElfSectionEnd = rangePair[1][1];
 
     return secondElfSectionStart >= firstElfSectionStart && secondElfSectionEnd <= firstElfSectionEnd;
+  }
+}
+
+function findOverlappingSectionAssignments(sectionAssignments) {
+  let result = 0;
+
+  sectionAssignments.forEach(elfPair => {
+    if (isOverlapping(elfPair)) {
+      result++;
+    }
+  });
+
+  return result;
+
+  function isOverlapping(rangePair) {
+    const firstElfSectionStart = rangePair[0][0];
+    const firstElfSectionEnd = rangePair[0][1];
+    const secondElfSectionStart = rangePair[1][0];
+    const secondElfSectionEnd = rangePair[1][1];
+
+    return firstElfSectionStart <= secondElfSectionEnd && firstElfSectionEnd >= secondElfSectionStart;
   }
 }
