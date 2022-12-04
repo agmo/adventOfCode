@@ -11,9 +11,11 @@
 <script src="day1.js"></script>
 <script src="day2.js"></script>
 <script src="day3.js"></script>
+<script src="day4.js"></script>
 <script src="day1_input.js"></script>
 <script src="day2_input.js"></script>
 <script src="day3_input.js"></script>
+<script src="day4_input.js"></script>
 <script>
   QUnit.skip("Day 1, part 1.", function (assert) {
     assert.equal(findElfCarryingMostCalories(calories), 69693);
@@ -38,9 +40,14 @@
     assert.equal(calculatePrioritiesSumPart1(rucksackContents), 7850);
   });
 
-  QUnit.test("Day 3, part 2.", function (assert) {
+  QUnit.skip("Day 3, part 2.", function (assert) {
     assert.equal(calculatePrioritiesSumPart2(testRucksackContents), 70);
     assert.equal(calculatePrioritiesSumPart2(rucksackContents), 2581);
+  });
+
+  QUnit.test("Day 4, part 1.", function (assert) {
+    assert.equal(findFullyContainedSectionAssignments(testSectionAssignments), 2);
+    assert.equal(findFullyContainedSectionAssignments(sectionAssignments), 453);
   });
 </script>
 </body>
