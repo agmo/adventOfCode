@@ -12,10 +12,12 @@
 <script src="day2.js"></script>
 <script src="day3.js"></script>
 <script src="day4.js"></script>
+<script src="day5.js"></script>
 <script src="day1_input.js"></script>
 <script src="day2_input.js"></script>
 <script src="day3_input.js"></script>
 <script src="day4_input.js"></script>
+<script src="day5_input.js"></script>
 <script>
   QUnit.skip("Day 1, part 1.", function (assert) {
     assert.equal(findElfCarryingMostCalories(calories), 69693);
@@ -53,6 +55,11 @@
   QUnit.skip("Day 4, part 2.", function (assert) {
     assert.equal(findOverlappingSectionAssignments(testSectionAssignments), 4);
     assert.equal(findOverlappingSectionAssignments(sectionAssignments), 919);
+  });
+
+  QUnit.test("Day 5, part 1.", function (assert) {
+    assert.equal(findCratesOnTop(testStartingStacks, testStartingStacksIndexes, testRearrangementProcedure), 'CMZ');
+    assert.equal(findCratesOnTop(startingStacks, startingStacksIndexes, rearrangementProcedure), 'NTWZZWHFV');
   });
 </script>
 </body>
