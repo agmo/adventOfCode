@@ -1,4 +1,4 @@
-function findCratesOnTop(startingStacks, startingStacksIndexes, rearrangementProcedure) {
+function findCratesOnTop(startingStacks, startingStacksIndexes, rearrangementProcedure, part) {
   const stacks = new Map();
 
   for (let i = startingStacks.length - 1; i >= 0; i--) {
@@ -28,7 +28,12 @@ function findCratesOnTop(startingStacks, startingStacksIndexes, rearrangementPro
       stacks.get(targetStack).push(crateToMove);
     } else {
       const from = stacks.get(sourceStack);
-      const cratesToMove = from.slice(from.length - cratesToMoveCount).reverse();
+      const cratesToMove = from.slice(from.length - cratesToMoveCount);
+
+      if (part === 1) {
+        cratesToMove.reverse();
+      }
+
       stacks.set(sourceStack, from.slice(0, from.length - cratesToMoveCount));
       stacks.get(targetStack).push(...cratesToMove);
     }

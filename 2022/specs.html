@@ -58,8 +58,13 @@
   });
 
   QUnit.test("Day 5, part 1.", function (assert) {
-    assert.equal(findCratesOnTop(testStartingStacks, testStartingStacksIndexes, testRearrangementProcedure), 'CMZ');
-    assert.equal(findCratesOnTop(startingStacks, startingStacksIndexes, rearrangementProcedure), 'NTWZZWHFV');
+    assert.equal(findCratesOnTop(testStartingStacks, testStartingStacksIndexes, testRearrangementProcedure, 1), 'CMZ');
+    assert.equal(findCratesOnTop(startingStacks, startingStacksIndexes, rearrangementProcedure, 1), 'NTWZZWHFV');
+  });
+
+  QUnit.test("Day 5, part 2.", function (assert) {
+    assert.equal(findCratesOnTop(testStartingStacks, testStartingStacksIndexes, testRearrangementProcedure, 2), 'MCD');
+    assert.equal(findCratesOnTop(startingStacks, startingStacksIndexes, rearrangementProcedure, 2), 'BRZGFVBTJ');
   });
 </script>
 </body>
