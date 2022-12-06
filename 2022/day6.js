@@ -1,5 +1,5 @@
-function findFirstStartOfPacketMarker(testDatastreamBuffer) {
-  const markerLength = 4;
+function findFirstStartOfPacketMarker(testDatastreamBuffer, part) {
+  const markerLength = part === 1 ? 4 : 14;
   let result = 0;
 
   for (let i = 0; i < testDatastreamBuffer.length; i++) {

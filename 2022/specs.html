@@ -70,12 +70,19 @@
   });
 
   QUnit.test("Day 6, part 1.", function (assert) {
-    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer1), 7);
-    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer2), 5);
-    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer3), 6);
-    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer4), 10);
-    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer5), 11);
-    assert.equal(findFirstStartOfPacketMarker(datastreamBuffer), 1198);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer1, 1), 7);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer2, 1), 5);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer3, 1), 6);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer4, 1), 10);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer5, 1), 11);
+    assert.equal(findFirstStartOfPacketMarker(datastreamBuffer, 1), 1198);
+
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer1, 2), 19);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer2, 2), 23);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer3, 2), 23);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer4, 2), 29);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer5, 2), 26);
+    assert.equal(findFirstStartOfPacketMarker(datastreamBuffer, 2), 3120);
   });
 </script>
 </body>
