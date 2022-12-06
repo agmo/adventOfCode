@@ -13,11 +13,13 @@
 <script src="day3.js"></script>
 <script src="day4.js"></script>
 <script src="day5.js"></script>
+<script src="day6.js"></script>
 <script src="day1_input.js"></script>
 <script src="day2_input.js"></script>
 <script src="day3_input.js"></script>
 <script src="day4_input.js"></script>
 <script src="day5_input.js"></script>
+<script src="day6_input.js"></script>
 <script>
   QUnit.skip("Day 1, part 1.", function (assert) {
     assert.equal(findElfCarryingMostCalories(calories), 69693);
@@ -57,14 +59,23 @@
     assert.equal(findOverlappingSectionAssignments(sectionAssignments), 919);
   });
 
-  QUnit.test("Day 5, part 1.", function (assert) {
+  QUnit.skip("Day 5, part 1.", function (assert) {
     assert.equal(findCratesOnTop(testStartingStacks, testStartingStacksIndexes, testRearrangementProcedure, 1), 'CMZ');
     assert.equal(findCratesOnTop(startingStacks, startingStacksIndexes, rearrangementProcedure, 1), 'NTWZZWHFV');
   });
 
-  QUnit.test("Day 5, part 2.", function (assert) {
+  QUnit.skip("Day 5, part 2.", function (assert) {
     assert.equal(findCratesOnTop(testStartingStacks, testStartingStacksIndexes, testRearrangementProcedure, 2), 'MCD');
     assert.equal(findCratesOnTop(startingStacks, startingStacksIndexes, rearrangementProcedure, 2), 'BRZGFVBTJ');
+  });
+
+  QUnit.test("Day 6, part 1.", function (assert) {
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer1), 7);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer2), 5);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer3), 6);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer4), 10);
+    assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer5), 11);
+    assert.equal(findFirstStartOfPacketMarker(datastreamBuffer), 1198);
   });
 </script>
 </body>
