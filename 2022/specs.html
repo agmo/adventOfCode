@@ -14,12 +14,14 @@
 <script src="day4.js"></script>
 <script src="day5.js"></script>
 <script src="day6.js"></script>
+<script src="day8.js"></script>
 <script src="day1_input.js"></script>
 <script src="day2_input.js"></script>
 <script src="day3_input.js"></script>
 <script src="day4_input.js"></script>
 <script src="day5_input.js"></script>
 <script src="day6_input.js"></script>
+<script src="day8_input.js"></script>
 <script>
   QUnit.skip("Day 1, part 1.", function (assert) {
     assert.equal(findElfCarryingMostCalories(calories), 69693);
@@ -69,7 +71,7 @@
     assert.equal(findCratesOnTop(startingStacks, startingStacksIndexes, rearrangementProcedure, 2), 'BRZGFVBTJ');
   });
 
-  QUnit.test("Day 6, part 1.", function (assert) {
+  QUnit.skip("Day 6, part 1.", function (assert) {
     assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer1, 1), 7);
     assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer2, 1), 5);
     assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer3, 1), 6);
@@ -83,6 +85,11 @@
     assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer4, 2), 29);
     assert.equal(findFirstStartOfPacketMarker(testDatastreamBuffer5, 2), 26);
     assert.equal(findFirstStartOfPacketMarker(datastreamBuffer, 2), 3120);
+  });
+
+  QUnit.test("Day 8, part 1.", function (assert) {
+    assert.equal(getVisibleTreesCount(testTreeHeights), 21);
+    assert.equal(getVisibleTreesCount(treeHeights), 1684);
   });
 </script>
 </body>
