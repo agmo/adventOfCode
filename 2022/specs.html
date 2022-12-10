@@ -15,6 +15,7 @@
 <script src="day5.js"></script>
 <script src="day6.js"></script>
 <script src="day8.js"></script>
+<script src="day10.js"></script>
 <script src="day1_input.js"></script>
 <script src="day2_input.js"></script>
 <script src="day3_input.js"></script>
@@ -22,6 +23,7 @@
 <script src="day5_input.js"></script>
 <script src="day6_input.js"></script>
 <script src="day8_input.js"></script>
+<script src="day10_input.js"></script>
 <script>
   QUnit.skip("Day 1, part 1.", function (assert) {
     assert.equal(findElfCarryingMostCalories(calories), 69693);
@@ -92,9 +94,14 @@
     assert.equal(getVisibleTreesCount(treeHeights), 1684);
   });
 
-  QUnit.test("Day 8, part 2.", function (assert) {
+  QUnit.skip("Day 8, part 2.", function (assert) {
     assert.equal(findHighestScenicScore(testTreeHeights), 8);
     assert.equal(findHighestScenicScore(treeHeights), 486540);
+  });
+
+  QUnit.test("Day 10, part 1.", function (assert) {
+    assert.equal(calculateSignalStrengths(testProgram), 13140);
+    assert.equal(calculateSignalStrengths(program), 13820);
   });
 </script>
 </body>
