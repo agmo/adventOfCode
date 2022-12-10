@@ -87,9 +87,14 @@
     assert.equal(findFirstStartOfPacketMarker(datastreamBuffer, 2), 3120);
   });
 
-  QUnit.test("Day 8, part 1.", function (assert) {
+  QUnit.skip("Day 8, part 1.", function (assert) {
     assert.equal(getVisibleTreesCount(testTreeHeights), 21);
     assert.equal(getVisibleTreesCount(treeHeights), 1684);
+  });
+
+  QUnit.test("Day 8, part 2.", function (assert) {
+    assert.equal(findHighestScenicScore(testTreeHeights), 8);
+    assert.equal(findHighestScenicScore(treeHeights), 486540);
   });
 </script>
 </body>
