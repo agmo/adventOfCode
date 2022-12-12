@@ -110,9 +110,14 @@
   // renderImage(testProgram);
   // renderImage(program); // ZKGRKGRK
 
-  QUnit.test("Day 11, part 1.", function (assert) {
-    assert.equal(findLevelOfMonkeyBusiness(testNotes), 10605);
-    assert.equal(findLevelOfMonkeyBusiness(notes), 50172);
+  QUnit.skip("Day 11, part 1.", function (assert) {
+    assert.equal(findLevelOfMonkeyBusiness(testNotes, 1), 10605);
+    assert.equal(findLevelOfMonkeyBusiness(notes, 1), 50172);
+  });
+
+  QUnit.test("Day 11, part 2.", function (assert) {
+    assert.equal(findLevelOfMonkeyBusiness(testNotes, 2), 2713310158);
+    assert.equal(findLevelOfMonkeyBusiness(notes, 2), 11614682178);
   });
 </script>
 </body>
