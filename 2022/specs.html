@@ -122,9 +122,14 @@
     assert.equal(findLevelOfMonkeyBusiness(notes, 2), 11614682178);
   });
 
-  QUnit.test("Day 12, part 1.", function (assert) {
-    assert.equal(findFewestStepsToBestSignal(testHeightmap), 31);
-    assert.equal(findFewestStepsToBestSignal(heightmap), 420);
+  QUnit.skip("Day 12, part 1.", function (assert) {
+    assert.equal(findFewestStepsToBestSignalPart1(testHeightmap), 31);
+    assert.equal(findFewestStepsToBestSignalPart1(heightmap), 420);
+  });
+
+  QUnit.test("Day 12, part 2.", function (assert) {
+    assert.equal(findFewestStepsToBestSignalPart2(testHeightmap), 29);
+    assert.equal(findFewestStepsToBestSignalPart2(heightmap), 414);
   });
 </script>
 </body>
